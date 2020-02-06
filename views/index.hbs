@@ -1,19 +1,35 @@
-<h1>Stack Overflow</h1>
+<div style="display:flex; flex-direction: column; align-items: center; background-color: #fffdd0; width: 100vw; height: 60vh;" >
+<h1>Stack Underflow</h1>
 
-
-<h2>Submit Question: </h2>
-
+<h3>Submit Question: </h3>
+<div>
+    
 <form action="/question" method="post" accept-charset="utf-8">
-    <label for="question">Ask a question</label>
-    <textarea rows="4" cols="50" type="text" value="" name="question" id="question">
-    </textarea>
+    <div>
+    <label for="question">Title:</label>
+    <input style="height:2rem; width: 30vw; margin: 3vw" value="" name="question" id="question">
+    </div>
+    <div>
+    <label for="question">Body:</label>
+    <input style="height:10rem; width: 30vw; margin: 3vw" placeholder="Add a description" type="text" value="" name="description" id="description">
+    
+    </div>
+    <div style="display:flex; flex-direction: column; align-items: center">
+        <input style="height:2rem; width:10rem; padding:1rem;"type="submit" value="Add question">
+    </div>
 
-    <input type="submit" value="Add question">
 </form>
-
+   
+</div>
+</div>
+<div style="background-color: lightgray; width: 100vw; height: 40vh;">
+    <div style="padding: 3vw;">
+        <h3 style="text-decoration: underline;">Recent Questions</h3>
 {{#each question}}
-<p>
-    <a href="question/{{this._id}}">{{this.question}} </a>
 
+<p>
+    <a href="question/{{this._id}}">{{this.question}} </a> - Submitted at: {{this.timestamp}}
 </p>
 {{/each}}
+</div>
+</div>

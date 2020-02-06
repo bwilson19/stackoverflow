@@ -26,9 +26,9 @@ router.put('/:id', (req, res) => {
   const answer = {
     answer: req.body.answer
   };
-  Question.findOneAndUpdate({ _id: req.params.id }, answer, { new: true }).then(
+  Question.findOneAndUpdate({ _id: req.params.id }, {$push: {'answer': {"title": req.body.answer}}}, {new: true}).then(
     answer => {
-      res.redirect('/question');
+      res.render('question', answer);
     }
   );
 });
@@ -40,6 +40,12 @@ router.post('/', (req, res) => {
       res.redirect('/question');
     })
     .catch(console.error);
+});
+
+router.delete('/:id', (req, res) => {
+  Question.findOneAndRemove({ _id: req.params.id }).then(() => {
+    res.redirect('/question');
+  });
 });
 
 module.exports = router;
