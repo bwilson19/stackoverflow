@@ -26,11 +26,13 @@ router.put('/:id', (req, res) => {
   const answer = {
     answer: req.body.answer
   };
-  Question.findOneAndUpdate({ _id: req.params.id }, {$push: {'answer': {"title": req.body.answer}}}, {new: true}).then(
-    answer => {
-      res.render('question', answer);
-    }
-  );
+  Question.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { answer: { title: req.body.answer } } },
+    { new: true }
+  ).then(answer => {
+    res.render('question', answer);
+  });
 });
 
 //CREATE ROUTE PT. 2

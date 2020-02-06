@@ -1,29 +1,31 @@
-<div style="display:flex; flex-direction: column; align-items: center; background-color: #fffdd0; width: 100vw; height: 60vh;">
-<a href="/question">back to questions</a>
-<div style="width:50vw; display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
-<h1>{{this.question}}</h1>
-<form action="/question/{{_id}}?_method=delete" method="post">
-<input type="submit" value="Delete Question"></form>
+<div
+  style="display:flex; flex-direction: column; align-items: center; background-color: #fffdd0; width: 100vw; height: 60vh;">
+  <a href="/question">back to questions</a>
+  <div style="width:50vw; display: flex; flex-direction: row; justify-content: space-around; align-items: center;">
+    <h1>{{this.question}}</h1>
+    <form action="/question/{{_id}}?_method=delete" method="post">
+      <input type="submit" value="Delete Question"></form>
 
-</div>
-<h2>{{this.description}}</h2>
-<div>
+  </div>
+  <h2>{{this.description}}</h2>
+  <div>
 
 
-<form action="/question/{{_id}}?_method=put" method="post">
+    <form action="/question/{{_id}}?_method=put" method="post">
 
-  <input placeholder="Answer the question here" style="height:10rem; width: 30vw; margin: 3vw" type="text" value="" name="answer" id="answer">
+      <input placeholder="Answer the question here" style="height:10rem; width: 30vw; margin: 3vw" type="text" value=""
+        name="answer" id="answer">
 
-  <input type="submit" value="Submit Answer">
-</form>
-</div>
+      <input type="submit" value="Submit Answer">
+    </form>
+  </div>
 
-<div style="background-color: lightgray; width: 100vw; height: 40vh;">
+  <div style="background-color: lightgray; width: 100vw; height: 40vh;">
     <div style="padding: 3vw;">
       <h3>Recent Answers</h3>
-{{#each answer}}
-<p>{{this.title}} </p>
-{{/each}}
-</div>
-</div>
+      {{#each answer}}
+      <p>{{this.title}} </p>
+      {{/each}}
+    </div>
+  </div>
 </div>
