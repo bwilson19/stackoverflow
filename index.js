@@ -16,6 +16,6 @@ app.get('/', (req, res) => {
 app.use(methodOverride('_method'));
 
 app.use('/question', questionController);
-app.listen(4000, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log('app listening on port 4000');
 });
