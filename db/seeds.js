@@ -1,9 +1,9 @@
 const Question = require('../models/Question');
 const seedData = require('./seeds.json');
 
-Question.remove({})
+Question.deleteMany({})
   .then(() => {
-    return Question.collection.insert(seedData);
+    return Question.collection.insertMany(seedData);
   })
   .then(() => {
     process.exit();
