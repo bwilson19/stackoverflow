@@ -1,16 +1,19 @@
 <h1>Stack Overflow</h1>
 
+
 <h2>Submit Question: </h2>
 
 <form action="/question" method="post" accept-charset="utf-8">
     <label for="question">Ask a question</label>
-    <input type="text" value="" name="question" id="question">
+    <textarea rows="4" cols="50" type="text" value="" name="question" id="question">
+    </textarea>
 
     <input type="submit" value="Add question">
 </form>
 
 {{#each question}}
 <p>
-    {{this.question}}
+    <a href="question/{{this._id}}">{{this.question}} </a>
+
 </p>
 {{/each}}

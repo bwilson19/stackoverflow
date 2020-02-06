@@ -2,7 +2,7 @@ const mongoose = require('../db/connection');
 
 const QuestionSchema = new mongoose.Schema({
   question: String,
-  answer: String,
+  answer: [],
   timestamp: { type: Date, default: Date.now }
 });
 

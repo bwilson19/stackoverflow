@@ -1,0 +1,10 @@
+<h1>{{this.question}}</h1>
+<form action="/question/{{_id}}?_method=put" method="post">
+  <label for="answer">Submit answer</label>
+
+  <textarea rows="4" cols="50" type="text" value="{{this.answer}}" name="answer" id="answer">
+            </textarea>
+  <input type="submit" value="answer">
+</form>
+
+<p>{{this.answer}} </p>

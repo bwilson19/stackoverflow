@@ -3,6 +3,15 @@ const Question = require('../models/Question');
 
 const router = express.Router();
 
+//SHOW ROUTE
+router.get('/:id', (req, res) => {
+  Question.findById(req.params.id)
+    .then(question => {
+      res.render('question', question);
+    })
+    .catch(console.error);
+});
+
 //INDEX ROuTE
 router.get('/', (req, res) => {
   Question.find({})
@@ -12,35 +21,17 @@ router.get('/', (req, res) => {
     .catch(console.error);
 });
 
-// //UPDATE ROUTE
-// router.get('/:id/edit', (req, res) => {
-//   Todo.findById(req.params.id).then(todo => {
-//     res.render('edit', todo);
-//   });
-// });
-
-// //UPDATE ROUTE PT.2
-// router.put('/:id', (req, res) => {
-//   const complete = req.body.complete === 'on' ? true : false;
-//   const todo = {
-//     title: req.body.title,
-//     complete: complete
-//   };
-//   Todo.findOneAndUpdate({ _id: req.params.id }, todo, { new: true }).then(
-//     todo => {
-//       res.redirect('/todos');
-//     }
-//   );
-// });
-
-// //SHOW ROUTE
-// router.get('/:id', (req, res) => {
-//   Todo.findById(req.params.id)
-//     .then(todo => {
-//       res.render('show', todo);
-//     })
-//     .catch(console.error);
-// });
+//UPDATE ROUTE PT.2
+router.put('/:id', (req, res) => {
+  const answer = {
+    answer: req.body.answer
+  };
+  Question.findOneAndUpdate({ _id: req.params.id }, answer, { new: true }).then(
+    answer => {
+      res.redirect('/question');
+    }
+  );
+});
 
 //CREATE ROUTE PT. 2
 router.post('/', (req, res) => {
@@ -50,12 +41,5 @@ router.post('/', (req, res) => {
     })
     .catch(console.error);
 });
-
-// //DELETE ROUTE
-// router.delete('/:id', (req, res) => {
-//   Todo.findOneAndRemove({ _id: req.params.id }).then(() => {
-//     res.redirect('/todos');
-//   });
-// });
 
 module.exports = router;
